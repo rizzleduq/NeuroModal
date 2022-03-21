@@ -17,7 +17,7 @@ class Add(Function):
         https://numpy.org/doc/stable/user/basics.broadcasting.html
         :return: sum of the two arguments
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return self.args[0].data + self.args[1].data
 
     def _backward(self, grad_output: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         """

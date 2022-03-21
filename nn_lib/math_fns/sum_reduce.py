@@ -30,7 +30,7 @@ class SumReduce(Function):
 
         :return: the reduced value
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return np.sum(self.args[0].data,self.axis)
 
     def _backward(self, grad_output: np.ndarray) -> Tuple[np.ndarray, ...]:
         """

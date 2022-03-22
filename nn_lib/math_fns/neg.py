@@ -24,4 +24,4 @@ class Neg(Function):
         :param grad_output: gradient over the result of the negation
         :return: a tuple with a single value representing the gradient over the negation argument
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return -grad_output,-grad_output

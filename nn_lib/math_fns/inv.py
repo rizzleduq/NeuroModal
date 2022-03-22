@@ -24,4 +24,4 @@ class Inv(Function):
         :param grad_output: gradient over the result of the invert function
         :return: a tuple with a single value representing the gradient over the inversion argument
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return -grad_output / (self.args[0].data)**(2),

@@ -29,4 +29,4 @@ class Add(Function):
         :param grad_output: gradient over the result of the addition operation
         :return: a tuple of gradients over two addition arguments
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return grad_output,grad_output

@@ -25,4 +25,6 @@ class MatMul(Function):
         :param grad_output: gradient over the result of the multiplication operation
         :return: a tuple of gradients over two multiplication arguments
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        a=np.matmul(grad_output,np.transpose(self.args[1].data))
+        b=np.matmul(np.transpose(self.args[1].data),grad_output)
+        return a,b

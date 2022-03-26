@@ -30,4 +30,10 @@ class Max(Function):
         :param grad_output: gradient over the result of the maximum operation
         :return: a tuple of gradients over arguments of the maximum
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        x = self.args[0].data
+        y = self.args[1].data
+
+        a = np.where(x == y, 0.5, np.where(x > y, 1, 0))
+        b = np.where(x == y, 0.5, np.where(y > x, 1, 0))
+
+        return (a * grad_output, y * grad_output)

@@ -36,4 +36,6 @@ class Slice(Function):
         :param grad_output: gradient over the result of the slicing operation
         :return: a tuple with a single value representing the gradient over the slice operation argument
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        a = np.zeros_like(self.args[0].data)
+        a[self.slice_obj]=grad_output
+        return (a,)

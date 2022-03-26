@@ -40,4 +40,4 @@ class SumReduce(Function):
         :param grad_output: the gradient of the result of the reduction
         :return: a tuple with a single value representing the gradient over the reduction argument
         """
-        return grad_output*np.ones_like(self.args.data[0]),
+        return np.ones_like(self.args[0].data)*grad_output,

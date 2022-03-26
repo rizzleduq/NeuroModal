@@ -36,4 +36,4 @@ class Max(Function):
         a = np.where(x == y, 0.5, np.where(x > y, 1, 0))
         b = np.where(x == y, 0.5, np.where(y > x, 1, 0))
 
-        return a * grad_output, y * grad_output
+        return a * grad_output, b * grad_output

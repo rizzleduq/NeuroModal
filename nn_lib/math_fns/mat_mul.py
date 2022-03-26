@@ -27,4 +27,4 @@ class MatMul(Function):
         """
         a=np.matmul(grad_output,np.transpose(self.args[1].data))
         b=np.matmul(np.transpose(self.args[0].data),grad_output)
-        return (a,b)
+        return a,b

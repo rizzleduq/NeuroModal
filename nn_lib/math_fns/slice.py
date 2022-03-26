@@ -38,4 +38,4 @@ class Slice(Function):
         """
         a = np.zeros_like(self.args[0].data)
         a[self.slice_obj]=grad_output
-        return (a,)
+        return a,

@@ -29,4 +29,4 @@ class Add(Function):
         :param grad_output: gradient over the result of the addition operation
         :return: a tuple of gradients over two addition arguments
         """
-        return (grad_output,grad_output)
+        return grad_output,grad_output

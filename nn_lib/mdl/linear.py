@@ -34,7 +34,7 @@ class Linear(Module):
         :return: an output of the layer of the shape (B, self.out_dim), where B is the batch size
         """
         result = F.mat_mul(x, self.weight) + self.bias
-        if self.activation_fn == 'ReLu':
+        if self.activation_fn == 'relu':
             return F.relu(result)
         else:
             return result

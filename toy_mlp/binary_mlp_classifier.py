@@ -35,7 +35,13 @@ class BinaryMLPClassifier(Module):
         Output of the last layer will later be used as an argument to the sigmoid function
         :return: None
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        self._add_layer(self.in_features, self.hidden_layer_sizes[0], 'relu')
+
+        for in_dim_index, in_dim in enumerate(self.hidden_layer_sizes[:-1]):
+            out_dim = self.hidden_layer_sizes[in_dim_index + 1]
+            self._add_layer(in_dim, out_dim, 'relu')
+
+        self._add_layer(self.hidden_layer_sizes[-1], 1, 'none')
 
     def _add_layer(self, in_dim: int, out_dim: int, activation_fn: str) -> None:
         """
@@ -45,7 +51,11 @@ class BinaryMLPClassifier(Module):
         :param activation_fn: activation function to apply to the outputs of the added layer
         :return: None
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        layer = Linear(in_dim, out_dim, activation_fn)
+        self.layers.append(layer)
+
+        self._parameters.append(layer.weight)
+        self._parameters.append(layer.bias)
 
     def forward(self, x: Tensor) -> Tensor:
         """
@@ -54,7 +64,10 @@ class BinaryMLPClassifier(Module):
         :param x: input data batch of the shape (B, self.in_features)
         :return: prediction batch of logits of the shape (B,)
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        predictions = x
+        for layer in self.layers:
+            predictions = layer(predictions)
+        return predictions
 
     def parameter_count(self) -> int:
         """

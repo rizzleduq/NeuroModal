@@ -67,7 +67,7 @@ class BinaryMLPClassifier(Module):
         predictions = x
         for layer in self.layers:
             predictions = layer(predictions)
-        return predictions
+        return predictions[:,0]
 
     def parameter_count(self) -> int:
         """

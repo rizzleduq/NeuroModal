@@ -21,6 +21,7 @@ class BCELoss(Loss):
         :return: a loss Tensor; if reduction is True, returns a scalar, otherwise a Tensor of shape (B,) -- loss value
             per batch element
         """
+
         activ_pred = F.sigmoid(prediction_logits)
         one = Tensor(1, requires_grad=True)
         max_log = Tensor(self.MAX_LOG, requires_grad=True)

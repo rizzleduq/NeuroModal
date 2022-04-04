@@ -22,11 +22,9 @@ class CELoss(Loss):
             per batch element
         """
 
-        softmax_pred_log=F.softmax(prediction_logits)
+
         max_log=Tensor(self.MAX_LOG,requires_grad=True)
-        clip_pred=F.clip(F.log(softmax_pred_log),-max_log,max_log)*target
-        sum = - F.reduce(clip_pred,reduction=True)
-
-        return sum
-
+        softmax_pred_log = F.softmax(F.clip(prediction_logits,-max_log,max_log))
+        sum = - F.reduce(F.log(softmax_pred_log)*target,axis=1,keepdims=True)
+        return F.reduce(sum)
 

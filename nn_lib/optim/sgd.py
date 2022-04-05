@@ -28,4 +28,3 @@ class SGD(Optimizer):
             if self.weight_decay != 0:
                 par.grad.data = par.grad.data + self.weight_decay * par.data
             par.data = par.data - par.grad.data * self.lr
-

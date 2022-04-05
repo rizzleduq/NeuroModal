@@ -15,7 +15,6 @@ class BCELoss(Loss):
     def forward(self, prediction_logits: Tensor, target: Tensor) -> Tensor:
         """
         Compute a loss Tensor based on logit predictions and ground truth labels
-
         :param prediction_logits: prediction logits returned by a model (i.e. sigmoid argument) of shape (B,)
         :param target: binary ground truth labels of shape (B,)
         :return: a loss Tensor; if reduction is True, returns a scalar, otherwise a Tensor of shape (B,) -- loss value

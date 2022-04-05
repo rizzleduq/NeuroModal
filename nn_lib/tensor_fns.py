@@ -45,7 +45,6 @@ def clip(x: Tensor, lower: Tensor, upper: Tensor) -> Tensor:
     clip_from_above = minimum(clip_from_below, upper)
     return clip_from_above
 
-
 def reduce(x: Tensor, axis: Union[int, Tuple[int, ...], None] = None, reduction: str = 'mean', keepdims: bool = False) -> Tensor:
     """
     Apply reduction to a Tensor
@@ -70,7 +69,7 @@ def reduce(x: Tensor, axis: Union[int, Tuple[int, ...], None] = None, reduction:
         result = result / Tensor(denominator)
     return result
 
-def softmax(x:Tensor) -> Tensor:
-    numerator=exp(x)
-    denominator=reduce(numerator,axis=1,keepdims=True,reduction='sum')
-    return numerator/denominator
+def softmax(x: Tensor) ->Tensor:
+    numerator = exp(x)
+    denominator = reduce(numerator, axis=1, keepdims=True, reduction='sum')
+    return numerator /  denominator

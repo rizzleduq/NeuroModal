@@ -30,7 +30,7 @@ class SumReduce(Function):
 
         :return: the reduced value
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return np.sum(self.args[0].data,self.axis)
 
     def _backward(self, grad_output: np.ndarray) -> Tuple[np.ndarray, ...]:
         """
@@ -40,4 +40,4 @@ class SumReduce(Function):
         :param grad_output: the gradient of the result of the reduction
         :return: a tuple with a single value representing the gradient over the reduction argument
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return np.ones_like(self.args[0].data)*grad_output,

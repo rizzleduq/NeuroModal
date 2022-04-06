@@ -15,7 +15,7 @@ class Exp(Function):
 
         :return: exponent of the argument
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return np.exp(self.args[0].data)
 
     def _backward(self, grad_output: np.ndarray) -> Tuple[np.ndarray]:
         """
@@ -24,4 +24,4 @@ class Exp(Function):
         :param grad_output: gradient over the result of the exponent function
         :return: a tuple with a single value representing the gradient over the exponent argument
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return grad_output * np.exp(self.args[0].data),

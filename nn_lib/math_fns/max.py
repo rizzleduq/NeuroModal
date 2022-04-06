@@ -17,7 +17,7 @@ class Max(Function):
         https://numpy.org/doc/stable/user/basics.broadcasting.html
         :return: maximum over the two arguments
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return np.maximum(self.args[0].data,self.args[1].data)
 
     def _backward(self, grad_output: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         """
@@ -30,4 +30,10 @@ class Max(Function):
         :param grad_output: gradient over the result of the maximum operation
         :return: a tuple of gradients over arguments of the maximum
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        x = self.args[0].data
+        y = self.args[1].data
+
+        a = np.where(x == y, 0.5, np.where(x > y, 1, 0))
+        b = np.where(x == y, 0.5, np.where(y > x, 1, 0))
+
+        return a * grad_output, b * grad_output

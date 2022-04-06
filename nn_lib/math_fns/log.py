@@ -15,7 +15,7 @@ class Log(Function):
 
         :return: logarithm of the argument
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return np.log(self.args[0].data)
 
     def _backward(self, grad_output: np.ndarray) -> Tuple[np.ndarray]:
         """
@@ -24,4 +24,4 @@ class Log(Function):
         :param grad_output: gradient over the result of the logarithm function
         :return: a tuple with a single value representing the gradient over the logarithm argument
         """
-        raise NotImplementedError   # TODO: implement me as an exercise
+        return grad_output/self.args[0].data,
